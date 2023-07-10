@@ -1,0 +1,127 @@
+html, body {
+  padding: 0;
+  margin: 0; }
+
+p {
+  margin-top: 10px; }
+
+a {
+  text-decoration: none; }
+
+.wrapper {
+  padding: 15px; }
+
+.header__wrapper {
+  background: #221F1F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+.header__leftSide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+.header__logo {
+  width: 100px;
+  height: 100px;
+  padding-right: 30px; }
+.header__title {
+  padding-top: 20px;
+  color: wheat;
+  font-size: 50px;
+  margin: 0; }
+.header__trash {
+  width: 70px;
+  -ms-flex-item-align: center;
+      align-self: center; }
+  .header__trash:hover {
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    cursor: pointer;
+    -webkit-filter: invert(17%);
+            filter: invert(17%); }
+
+.main {
+  min-height: calc(100vh - 182px); }
+  .main__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr; }
+  .main__orders {
+    display: none; }
+
+.form {
+  border-radius: 10px;
+  padding: 10px;
+  width: 450px;
+  border: 1px solid dodgerblue;
+  background-color: lemonchiffon;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%); }
+  .form__title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px; }
+  .form__submit {
+    display: inline;
+    width: 49%; }
+  .form__cansel {
+    display: inline;
+    width: 49%; }
+
+.field {
+  padding: 10px; }
+
+small {
+  color: red;
+  display: none; }
+
+label {
+  margin: 15px; }
+
+.categories {
+  padding-right: 40px; }
+  .categories__title {
+    font-size: 40px; }
+  .categories__list {
+    font-size: 25px; }
+  .categories__item {
+    padding: 10px; }
+
+.products {
+  min-width: 600px;
+  margin-top: 30px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; }
+  .products__title {
+    font-weight: bold; }
+
+.aboutProduct {
+  margin-top: 38px;
+  margin-left: 30px;
+  text-align: justify; }
+  .aboutProduct__button {
+    margin-top: 20px;
+    display: block; }
+
+.footer {
+  color: wheat; }
+  .footer__wrapper {
+    margin: 0 auto;
+    text-align: center;
+    background: #221F1F; }
+
+/*# sourceMappingURL=style.css.map */

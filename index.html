@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./images/favicon.ico">
+    <title>Інтернет-магазин ROZETKA</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header__wrapper wrapper">
+        <div class="header__leftSide">
+            <a class="header__link" href="index.html">
+                <img class='header__logo' src="images/header_logo-1.png">
+            </a>
+            <a class="header__title" href="index.html">ROZETKA</a>
+        </div>
+        <a  class="header__trashLink" href="#">
+            <img class="header__trash" src="./images/trash_hover.png" alt="trash">
+        </a>
+    </div>
+</header>
+
+<main class="main">
+    <form class="form">
+        <p class="form__title">Форма замовлення:</p>
+        <div class="field">
+            <label><span>ПІБ:</span>
+                <input class="form__pib" type="text" name="pib" placeholder="Введіть прізвище, ім'я, по-батькові"
+                       required>
+            </label>
+            <small class="form__errorPIB">Не правильно введено ПІБ</small>
+        </div>
+        <div class="field">
+            <label><span>Виберіть місто:</span>
+                <select class="form__cities">
+                    <option class="form__chooseCity" value="">Виберіть місто:</option>
+                    <option class="form__city" value="Київ">Київ</option>
+                    <option class="form__city" value="Дніпро">Дніпро</option>
+                    <option class="form__city" value="Чернігів">Чернігів</option>
+                    <option class="form__city" value="Запоріжжя">Запоріжжя</option>
+                    <option class="form__city" value="Маріуполь">Маріуполь</option>
+                </select>
+            </label>
+            <small class="form__cityError">Не вибрано місто</small>
+        </div>
+
+        <div class="field">
+            <label><span>Виберіть склад Нової пошти для надсилання:</span>
+                <select class="form__postStorage">
+                    <option class="form__choosePost" value="">Виберіть відділення:</option>
+                    <option class="form__post" value="np1">Відділення №1</option>
+                    <option class="form__post" value="np2">Відділення №2</option>
+                    <option class="form__post" value="np3">Відділення №3</option>
+                    <option class="form__post" value="np4">Відділення №4</option>
+                    <option class="form__post" value="np5">Відділення №5</option>
+                </select>
+            </label>
+            <small class="form__errorPostNumber">Не вибрано відділення НП</small>
+        </div>
+        <div class="field">
+            <fieldset>
+                <legend>Виберіть спосіб оплати:</legend>
+                <label>
+                    <input type="radio" id="afterpay" name="typeOfPay" value="afterPay" checked><span>Післяплата</span>
+                </label>
+                <label>
+                    <input type="radio" id="card" name="typeOfPay" value="card"><span>Оплата банківською карткою</span>
+                </label>
+            </fieldset>
+        </div>
+        <div class="field">
+            <label>Оберіть кількість:
+                <input class="form__count" type="number" value="1" min="1" max="10">
+            </label>
+        </div>
+        <div class="field">
+            <textarea class="form__comments" placeholder="Залиште Ваш коментар (необов'язково)"></textarea>
+        </div>
+        <div class="field">
+            <button class="form__submit">Замовити</button>
+            <button class="form__cansel">Скасувати</button>
+        </div>
+    </form>
+    <div class="main__wrapper wrapper">
+
+        <aside class="categories">
+            <h2 class="categories__title">Категорії</h2>
+        </aside>
+
+        <section class="products">
+
+        </section>
+
+        <section class="aboutProduct">
+
+        </section>
+
+        <div class="main__orders">
+            <h2 class="main__ordersTitle">
+                Мої замовлення:
+            </h2>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer__wrapper wrapper">
+        Copyright by @Serhii Romanenko
+    </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
