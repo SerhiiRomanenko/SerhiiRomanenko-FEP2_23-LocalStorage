@@ -357,7 +357,6 @@ const $canselButton = document.querySelector(".form__cansel");
 const $trashLink = document.querySelector(".header__trashLink");
 const $mainBox = document.querySelector(".main__box");
 const $ordersTag = document.querySelector(".main__orders");
-const $ordersContainer = document.querySelector(".main__ordersContainer");
 const $ordersTitle = document.querySelector(".orders__title");
 
 
