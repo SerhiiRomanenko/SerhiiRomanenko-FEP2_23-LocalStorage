@@ -345,7 +345,6 @@ const productSection = document.querySelector(".products");
 const categoriesBox = document.querySelector(".categories");
 const aboutProduct = document.querySelector(".aboutProduct");
 const $form = document.querySelector(".form");
-const $mainBox = document.querySelector(".main__box")
 const $pibInput = document.querySelector(".form__pib");
 const $cities = document.querySelectorAll(".form__city");
 const $allErrorMessage = document.querySelectorAll("small");
@@ -356,7 +355,11 @@ const $commentInput = document.querySelector(".form__comments");
 const $submitButton = document.querySelector(".form__submit");
 const $canselButton = document.querySelector(".form__cansel");
 const $trashLink = document.querySelector(".header__trashLink");
+const $mainBox = document.querySelector(".main__box");
 const $ordersTag = document.querySelector(".main__orders");
+const $ordersContainer = document.querySelector(".main__ordersContainer");
+const $ordersTitle = document.querySelector(".orders__title");
+
 
 let activeCategory = null;
 let activeProduct = null;
@@ -417,20 +420,72 @@ function renderOrders() {
     $ordersTag.style.display = "block";
     let orders = JSON.parse(window.localStorage.getItem("orders"));
     $ordersTag.innerHTML = "";
+    if (orders.length > 0) {
+        $ordersTitle.textContent = "Мої замовлення:";
+        let buttonOpenBuyForm = document.createElement("button");
+        buttonOpenBuyForm.textContent = "Замовити товари";
+        buttonOpenBuyForm.classList.add("main__buttonOpenBuyForm");
+        buttonOpenBuyForm.addEventListener("click", function () {
+            $form.style.display = "block";
+            $ordersTitle.style.display = "none";
+            $ordersTag.style.display = "none";
+        })
+        $ordersTag.append(buttonOpenBuyForm);
+    } else {
+        $ordersTitle.textContent = "Список моїх замовлень пустий :("
+    }
     console.log(orders);
+
+    let rightSideDiv = document.createElement("p");
+    rightSideDiv.classList.add("main__rightSideDiv");
+    rightSideDiv.innerHTML = "";
+    $ordersTag.append(rightSideDiv);
+
     for (let item of orders) {
         let itemDiv = document.createElement("div");
-        itemDiv.innerHTML = `<p>${item.name}</p>
-                             <p>${item.price}</p>
-                             <button>Видалити</button>`;
-        $ordersTag.append(itemDiv)
+        itemDiv.classList.add("main__orderBox");
+
+        let leftSideDiv = document.createElement("div");
+        leftSideDiv.classList.add("main__leftSideDiv");
+        leftSideDiv.dataset.value = item.id;
+        leftSideDiv.dataset.about = item.about;
+
+
+
+        const itemName = document.createElement("p");
+        itemName.textContent = item.name;
+        leftSideDiv.appendChild(itemName);
+
+        const itemPrice = document.createElement("p");
+        itemPrice.textContent = item.price;
+        leftSideDiv.appendChild(itemPrice);
+
+        const itemDetailsButton = document.createElement("button");
+        itemDetailsButton.classList.add("main__itemDetailsButton", "orderBtn");
+        itemDetailsButton.textContent = "Деталі";
+        itemDetailsButton.addEventListener("click", function () {
+            rightSideDiv.textContent = item.about;
+            const rightSideTitle = document.createElement("h2");
+            rightSideTitle.textContent = "Інформація про товар: ";
+            rightSideTitle.style.margin = "0px";
+            rightSideDiv.prepend(rightSideTitle)
+        })
+        leftSideDiv.appendChild(itemDetailsButton);
+
+        const itemDelete = document.createElement("button");
+        itemDelete.classList.add("main__delItemFromLS", "orderBtn");
+        itemDelete.textContent = "Видалити";
+        itemDelete.addEventListener("click", delProductFromLS)
+        leftSideDiv.appendChild(itemDelete);
+
+
+        $ordersTag.append(leftSideDiv);
     }
 }
 
+
 categoriesMurkUp.addEventListener("click", function (event) {
     activeCategory = event.target.innerText;
-
-
     if (categories.includes(activeCategory) && activeCategory !== null) {
         productSection.innerHTML = '';
         aboutProduct.innerHTML = '';
@@ -488,15 +543,15 @@ $canselButton.addEventListener("click", function (event) {
     $allErrorMessage.forEach((item) => item.style.display = "none")
     $form.style.display = "none";
     $pibInput.style.border = "1px solid black";
-    // document.querySelector(".main__wrapper").style.display = "flex";
-})
-
-$trashLink.addEventListener("click", function () {
-    $form.style.display = "none";
-    // document.querySelector(".main__wrapper").style.display = "none";
     renderOrders();
 })
 
+$trashLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    $form.style.display = "none";
+    $mainBox.style.display = "none";
+    renderOrders();
+})
 
 function addProductToLS(product) {
     if (window.localStorage.getItem("orders")) {
@@ -510,6 +565,15 @@ function addProductToLS(product) {
         window.localStorage.setItem("orders", JSON.stringify(order));
         console.log(JSON.parse(window.localStorage.getItem("orders")))
     }
+}
+
+function delProductFromLS(product) {
+    let orders = JSON.parse(window.localStorage.getItem("orders"));
+    console.log(product.currentTarget.parentNode.getAttribute('data-value'));
+    let filtredOrders = orders.filter(item => item.id !== +product.currentTarget.parentNode.getAttribute('data-value'));
+    window.localStorage.setItem("orders", JSON.stringify(filtredOrders));
+    alert(`Товар видалено`);
+    renderOrders();
 }
 
 function setActiveProduct(item) {

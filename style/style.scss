@@ -62,13 +62,67 @@ a {
 .main {
   min-height: calc(100vh - 182px);
 
-  &__wrapper {
+  &__orders {
+    display: none;
+  }
+
+  &__box {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr
   }
 
-  &__orders {
-    display: none;
+  &__buttonOpenBuyForm {
+    align-self: center;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 40px;
+
+    &:hover {
+      transition: 0.2s;
+      cursor: pointer;
+      filter: invert(17%) ;
+    }
+  }
+
+  &__orderBox {
+    margin: 10px 0;
+  }
+
+  &__leftSideDiv {
+    display: block;
+    width: 180px;
+    flex-direction: column;
+    text-align: center;
+
+    & p {
+      margin: 5px;
+    }
+  }
+
+  &__rightSideDiv {
+    position: absolute;
+    left: 25%;
+    top: 160px;
+  }
+}
+
+.orderBtn {
+  margin-bottom: 25px;
+  margin-right: 5px;
+}
+
+.button {
+  background-color: cadetblue;
+  text-align: center;
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  margin: 20px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: coral;
   }
 }
 
